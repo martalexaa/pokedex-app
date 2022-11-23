@@ -1,4 +1,5 @@
 //List of all Pokemons in this app
+let pokemonRepository = (function () {
 let pokemonList = [
   { 
     name: 'Pikachu', 
@@ -24,18 +25,45 @@ let pokemonList = [
 },
 ];
 
+function add(pokemon) {
+    pokemonList.push(pokemon);
+  }
+
+  function getAll() {
+    return pokemonList;
+  }
+
+  function forEach(pokemon) {
+    return pokemonList.forEach(pokemon);
+  }
+
+  return {
+    add: add,
+    getAll: getAll,
+    forEach: forEach
+    };
+})();
+
+pokemonRepository.add({ name: 'Charizard', height: 1.7, weight: 90.5, types: ['fire', 'flying'] }); // adds a new pokemon to the repository
+console.log(pokemonRepository.getAll()); // prints pokemons to the console
+
+
 //Iterates over the each pokemon in pokemonList using forEach loop, highlights the biggest one
 
 function myLoopFunction(pokemon) {
-  document.write('<p>' + pokemon.name 
-  + ' (height: ' + pokemon.height + ' m),' 
-  + ' (weight: ' + pokemon.weight + ' kg),' 
-  + ' type: ' + pokemon.types);
-  if (pokemon.height > 0.7) {
-    document.write('<span>' + '  - Wow, this one is the biggest!' + '</span>')
-  };  
-}
-  pokemonList.forEach(myLoopFunction);
+    document.write('<p>' + pokemon.name 
+    + ' (height: ' + pokemon.height + ' m),' 
+    + ' (weight: ' + pokemon.weight + ' kg),' 
+    + ' type: ' + pokemon.types);
+    if (pokemon.height > 1) {
+      document.write('<span>' + '  - Wow, this one is the biggest!' + '</span>')
+    };  
+  }
+
+  
+  pokemonRepository.forEach(myLoopFunction);
+
+
 
 /*Prints to the document each Pokemon's name followed by height
 for (let i = 0; i < pokemonList.length; i++) {
