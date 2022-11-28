@@ -37,11 +37,42 @@ function add(pokemon) {
     return pokemonList.forEach(pokemon);
   }
 
+  function showDetails(pokemon) {
+    return console.log(pokemon);
+  }
+
+/*  function filter(pokemon) {
+    return pokemonList.filter(pokemon);
+  } */
+
+  function addListItem(pokemon) {
+    let pokemonList = document.querySelector('.pokemon-list');
+    //create a list element
+    let listItem = document.createElement('li');
+    //create a button
+    let button = document.createElement('button');
+    //adds text to the button
+    button.innerText = pokemon.name;
+    //adds a class to the button, in order to be able to add to it style in css
+    button.classList.add('mybutton');
+    //adds the button as a child element to listItem parent element
+    listItem.appendChild(button);
+    //adds the listItem as a child element to it's parent, the pokemonList
+    pokemonList.appendChild(listItem);
+    //adds a button function
+    button.addEventListener('click', function (pokemon) {
+      showDetails(pokemon);
+    });
+  }
+
   return {
     add: add,
     getAll: getAll,
-    forEach: forEach
-    };
+    forEach: forEach,
+    //filter: filter,
+    addListItem: addListItem,
+    showDetails: showDetails
+    }   
 })();
 
 pokemonRepository.add({ name: 'Charizard', height: 1.7, weight: 90.5, types: ['fire', 'flying'] }); // adds a new pokemon to the repository
@@ -51,17 +82,23 @@ console.log(pokemonRepository.getAll()); // prints pokemons to the console
 //Iterates over the each pokemon in pokemonList using forEach loop, highlights the biggest one
 
 function myLoopFunction(pokemon) {
-    document.write('<p>' + pokemon.name 
-    + ' (height: ' + pokemon.height + ' m),' 
-    + ' (weight: ' + pokemon.weight + ' kg),' 
-    + ' type: ' + pokemon.types);
-    if (pokemon.height > 1) {
-      document.write('<span>' + '  - Wow, this one is the biggest!' + '</span>')
-    };  
-  }
+    pokemonRepository.addListItem(pokemon);
+}
 
-  
-  pokemonRepository.forEach(myLoopFunction);
+
+pokemonRepository.forEach(myLoopFunction);
+
+
+/*Filters pokemonlist by name
+
+function filterList(pokemon) {
+    if (pokemon.name === 'Raichu') {
+      return pokemon.name;
+    };
+}
+console.log(pokemonRepository.filter(filterList));
+*/
+
 
 
 
