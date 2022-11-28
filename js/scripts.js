@@ -60,7 +60,7 @@ function add(pokemon) {
     //adds the listItem as a child element to it's parent, the pokemonList
     pokemonList.appendChild(listItem);
     //adds a button function
-    button.addEventListener('click', function (pokemon) {
+    button.addEventListener('click', function () {
       showDetails(pokemon);
     });
   }
