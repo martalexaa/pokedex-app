@@ -1,33 +1,17 @@
-//List of all Pokemons in this app
 let pokemonRepository = (function () {
-let pokemonList = [
-  { 
-    name: 'Pikachu', 
-    height: 0.4, 
-    weight: 6, 
-    types: ['electric'] 
-},
-  { 
-    name: 'Raichu', 
-    height: 0.8, 
-    weight: 30, 
-    types: ['electric'] 
-},
-  { name: 'Squirtle', 
-  height: 0.5, 
-  weight: 9, 
-  types: ['water'] 
-},
-  { name: 'Nidoran', 
-  height: 0.4, 
-  weight: 7, 
-  types: ['poison'] 
-},
-];
+let pokemonList = [];
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=80';
 
 function add(pokemon) {
+  if (
+    typeof pokemon === "object" &&
+    "name" in pokemon
+  ) {
     pokemonList.push(pokemon);
+  } else {
+    console.log("pokemon is not correct");
   }
+}
 
   function getAll() {
     return pokemonList;
@@ -37,19 +21,11 @@ function add(pokemon) {
     return pokemonList.forEach(pokemon);
   }
 
-  function showDetails(pokemon) {
-    return console.log(pokemon);
-  }
-
-/*  function filter(pokemon) {
-    return pokemonList.filter(pokemon);
-  } */
-
   function addListItem(pokemon) {
     let pokemonList = document.querySelector('.pokemon-list');
-    //create a list element
+    //creates a list element
     let listItem = document.createElement('li');
-    //create a button
+    //creates a button
     let button = document.createElement('button');
     //adds text to the button
     button.innerText = pokemon.name;
@@ -64,24 +40,75 @@ function add(pokemon) {
       showDetails(pokemon);
     });
   }
+  
+  //fetching the data from URL
+    function loadList() {
+      return fetch(apiUrl).then(function (response) {  // <== this is a promise
+        return response.json();  // <== the data is transferred from the server in JSON language
+      }).then(function (json) {
+        json.results.forEach(function (item) {
+          let pokemon = {
+            name: item.name,
+            detailsUrl: item.url
+          };
+          add(pokemon);
+        });
+      }).catch(function (e) {  
+        console.error(e);
+      })
+    }
+  
+  //function for loading details
+    function loadDetails(item) {
+      let url = item.detailsUrl;
+      return fetch(url).then(function (response) {
+        return response.json();
+      }).then(function (details) {
+        // adding the details to the item
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+      }).catch(function (e) {
+        console.error(e);
+      });
+    }
 
-  return {
-    add: add,
-    getAll: getAll,
-    forEach: forEach,
-    //filter: filter,
-    addListItem: addListItem,
-    showDetails: showDetails
-    }   
+    function showDetails(item) {
+      pokemonRepository.loadDetails(item).then(function () {
+        console.log(item);
+      });
+    }
+  
+    return {
+      add: add,
+      getAll: getAll,
+      loadList: loadList,
+      forEach: forEach,
+      addListItem: addListItem,
+      loadDetails: loadDetails,
+      showDetails: showDetails
+    };
 })();
 
-pokemonRepository.add({ name: 'Charizard', height: 1.7, weight: 90.5, types: ['fire', 'flying'] }); // adds a new pokemon to the repository
-console.log(pokemonRepository.getAll()); // prints pokemons to the console
+pokemonRepository.loadList().then(function () {
+  pokemonRepository.getAll().forEach(function (pokemon) {
+    pokemonRepository.addListItem(pokemon);
+  });
+});
+
+function showDetails(pokemon) {
+  loadDetails(pokemon).then(function () {
+    console.log(pokemon);
+  });
+}
+
+//pokemonRepository.add({ name: 'Charizard', height: 1.7, weight: 90.5, types: ['fire', 'flying'] }); // adds a new pokemon to the repository
+//console.log(pokemonRepository.getAll()); // prints pokemons to the console
 
 
 //Iterates over the each pokemon in pokemonList using forEach loop, highlights the biggest one
 
-function myLoopFunction(pokemon) {
+/*function myLoopFunction(pokemon) {
     pokemonRepository.addListItem(pokemon);
 }
 
@@ -98,7 +125,6 @@ function filterList(pokemon) {
 }
 console.log(pokemonRepository.filter(filterList));
 */
-
 
 
 
