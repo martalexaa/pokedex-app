@@ -6,7 +6,7 @@ let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=80';
 let modalContainer = document.querySelector('#modal-container');
 
 //a function to open the modal container when the user click on one of the pokemon buttons
-function showModal(title, text, img) {
+function showModal(title, height, type, img) {
 modalContainer.innerHTML = '';
 
 let modal = document.createElement('div');
@@ -21,20 +21,23 @@ closeButtonElement.addEventListener('click', hideModal);
 let titleElement = document.createElement('h1');
 titleElement.innerText = title;
 
-let contentElement = document.createElement('p');
-contentElement.innerText = text;
+let heightElement = document.createElement('p');
+heightElement.innerText = height;
+
+let typeElement = document.createElement('p');
+typeElement.innerText = type;
 
 let imageElement = document.createElement("img");
 imageElement.setAttribute("src", img);
-imageElement.setAttribute("width", "80%");
-imageElement.setAttribute("height", "80%");
+imageElement.setAttribute("width", "300px");
+imageElement.setAttribute("height", "300px");
 imageElement.setAttribute("alt", "Pokemon image");
 imageElement.classList.add("pokemon-image");
-//imageElement.src = item.imageUrl; //why does it not work?? if I uncomment this, the modal does not open
 
 modal.appendChild(closeButtonElement);
 modal.appendChild(titleElement);
-modal.appendChild(contentElement);
+modal.appendChild(heightElement);
+modal.appendChild(typeElement);
 modal.appendChild(imageElement);
 modalContainer.appendChild(modal);
 
@@ -126,33 +129,26 @@ function addListItem(pokemon) {
         // adding the details to the item
         item.imageUrl = details.sprites.front_default;
         item.height = details.height;
-        item.types = details.types;
+        item.types = details.types.map((type) => type.type.name).join(', ');
       }).catch(function (e) {
         console.error(e);
       });
     }
 
     function showDetails(item) {
-      showModal(item.name, item.name + ' is ' + item.height + ' high. ' + 'Type: ' + item.types, item.imageUrl); //why does the height and type not show???
-   };
-
-    /*function showDetails(item) {
       pokemonRepository.loadDetails(item).then(function () {
-        console.log(pokemon.name, 'height: ' + pokemon.height);
+        showModal(item.name, 'Height: ' + item.height, ' Type: ' + item.types, item.imageUrl);
       });
-    }*/
+    }
     
     //functions returned by IIFE 
     return {
       add: add,
       getAll: getAll,
-      loadList: loadList,
-      forEach: forEach,
       addListItem: addListItem,
+      loadList: loadList,
       loadDetails: loadDetails,
-      showDetails: showDetails,
-      showModal: showModal,
-      hideModal: hideModal
+      showDetails: showDetails
     };
 })();
 
@@ -163,46 +159,5 @@ pokemonRepository.loadList().then(function () {
     pokemonRepository.addListItem(pokemon);
   });
 });
-
-function showDetails(pokemon) {
-  loadDetails(pokemon).then(function () {
-    console.log(pokemon);
-  });
-}
-
-//pokemonRepository.add({ name: 'Charizard', height: 1.7, weight: 90.5, types: ['fire', 'flying'] }); // adds a new pokemon to the repository
-//console.log(pokemonRepository.getAll()); // prints pokemons to the console
-
-
-//Iterates over the each pokemon in pokemonList using forEach loop, highlights the biggest one
-
-/*function myLoopFunction(pokemon) {
-    pokemonRepository.addListItem(pokemon);
-}
-
-
-pokemonRepository.forEach(myLoopFunction);
-
-
-/*Filters pokemonlist by name
-
-function filterList(pokemon) {
-    if (pokemon.name === 'Raichu') {
-      return pokemon.name;
-    };
-}
-console.log(pokemonRepository.filter(filterList));
-*/
-
-
-
-/*Prints to the document each Pokemon's name followed by height
-for (let i = 0; i < pokemonList.length; i++) {
-    document.write(pokemonList[i].name + ' ' + '(height: '), 
-    document.write(pokemonList[i].height + ')<br>');
-    
-Highlights the biggest Pokemon which size is above 0.7
-  if (pokemonList[i].height > 0.7) {document.write('- Wow, this one is the biggest!' + '<br>')};
-  }*/
 
 

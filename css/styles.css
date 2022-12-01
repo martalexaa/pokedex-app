@@ -73,20 +73,34 @@ li {
     list-style: none;
 }
 
+.mybutton:hover {
+  opacity: 0.8;
+}
+
 .pokemon-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
 }
 
+.pokemon-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
   
 @media all and (max-width: 500px) {
    h1 {
-    font-size: 60px;
+    font-size: 50px;
    }
    body {
-    font-size: 40px;
+    font-size: 25px;
   }
+  .pokemon-list {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
   }  
   
 @media all and (min-width: 500px) and (max-width: 750px){
@@ -94,8 +108,12 @@ li {
         font-size: 50px;
        }
        body {
-        font-size: 30px;
+        font-size: 25px;
       }
+      .pokemon-list {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 5px;
+    }
   }  
 
   @media all and (min-width: 750px) {
