@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <style>
+      @font-face {
+  font-family: pokemonFont;
+  src: url("fonts/pokemon-hollow.ttf") format("truetype"); /*source https://www.dafont.com/pokemon.font*/
+}
+      @font-face {
+  font-family: pressStart2P;
+  src: url("fonts/PressStart2P-Regular.ttf") format("truetype"); 
+}
+    </style>
     <title>Pokédox App</title>
   </head>
   <body>
@@ -14,8 +24,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Pokémon <span class="sr-only">(current)</span></a>
@@ -37,13 +46,10 @@
           </form>
         </div>
       </nav>
-
-      <h1>Pokédox App</h1>
-
     </header>
 
     <main>
-
+    <h1>Pokédox App</h1>
     <div class="container">
     <ul class="list-group pokemon-list">
     </ul>
