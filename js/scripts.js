@@ -12,7 +12,7 @@ function showModal(item) {
   modalTitle.empty();
   modalBody.empty();
 
-  let nameElement = $('<h1>' + item.name + '</h1>');
+  let nameElement = $('<h2>' + item.name + '</h2>');
   let imageElementFront = $('<img class="modal-img" style="width:50%">');
   imageElementFront.attr('src', item.imageUrlFront);
   let imageElementBack =  $('<img class="modal-img" style="width:50%">');
@@ -58,7 +58,7 @@ function addListItem(pokemon) {
   let listItem = $('<li class="list-group-item list-item list-group-item-danger"></li>');
 
     let button = $(
-      '<button class="pokemon-button btn" data-target="#pokemonModal" data-toggle="modal">' +
+      '<button class="pokemon-button btn btn-dark" data-target="#pokemonModal" data-toggle="modal">' +
         pokemon.name +
         '</button>'
     );
