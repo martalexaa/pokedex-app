@@ -1,13 +1,36 @@
 body {
   line-height: 1.5;
 }
+
 body {
-  margin-left: 50px;
-  margin-right: 50px;
+  font-family: pressStart2P;
+  background-image: url("pokedox_bg.jpg"); /*Source: https://www.wallpaperflare.com/pokemon-eeve-evolution-illustration-pokemon-pink-floyd-the-dark-side-of-the-moon-wallpaper-pjloq*/
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 h1 {
-  margin: 30px;
+  font-family: pokemonFont;
+  font-size: 60px;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.list-item {
+  background-color:rgba(0, 0, 0, 0);
+  border-style: none;
+}
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: black;
+}
+
+main {
+  margin-top: 20px;
 }
 
 
