@@ -4,7 +4,7 @@ body {
 
 body {
   font-family: pressStart2P;
-  background-image: url("pokedox_bg.jpg");
+  background-image: url("../img/pokedox_bg.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
@@ -27,7 +27,10 @@ main {
   margin-top: 100px;
 }
 
-
 .navbar-custom {
   background-color: black;
 }
+
+.nav-link {
+  color: yellow !important;
+  }
