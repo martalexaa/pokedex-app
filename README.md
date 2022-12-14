@@ -1,6 +1,7 @@
 # Pokedex-App
 
-To build a small web application with HTML, CSS, and JavaScript that loads
-data from an external API and enables the viewing of data points in detail.
+A small web application created as part of CareerFoundry's Full-Stack Web Development course with HTML, CSS, JavaScript, Bootstrap and jQuery that loads data from an external API and enables the viewing of data points in detail.
 
-Project Brief: https://images.careerfoundry.com/public/courses/fullstack-immersion/Full-Stack%20Immersion%20A1%20Project%20Brief.pdf
+The goal of this project was to learn basic JavaScript (variables, functions, arrays, DOM interaction, AJAX, Json etc.) in the second achievement of the course. Link to the hosted website: https://martalexaa.github.io/pokedex-app/
+
+Besides fulfilling the task requirements, I also gave the styling a boost by creating consistent colors and two fonts which match the Pokemon theme. 
