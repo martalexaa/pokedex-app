@@ -113,6 +113,30 @@ function addListItem(pokemon) {
         showModal(item);
       });
     }
+
+    //search function
+
+    function liveSearch() {
+      let lis = document.querySelectorAll('.list-item');
+      let search_query = document.querySelector('#search-input').value;
+  
+      for (let i = 0; i < lis.length; i++) {
+          if(lis[i].innerText.toLowerCase()
+            .includes(search_query.toLowerCase())) {
+            lis[i].classList.remove('is-hidden');
+          } else {
+            lis[i].classList.add('is-hidden'); 
+          }
+      }
+  }
+   
+  let searchInput = document.querySelector('#search-input');
+  
+  searchInput.addEventListener('keyup', () => {
+    liveSearch();
+
+
+  });
     
     //functions returned by IIFE 
     return {
@@ -121,7 +145,7 @@ function addListItem(pokemon) {
       addListItem: addListItem,
       loadList: loadList,
       loadDetails: loadDetails,
-      showDetails: showDetails
+      showDetails: showDetails,
     };
 })();
 
