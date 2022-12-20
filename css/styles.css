@@ -1,9 +1,12 @@
+
+
 body {
   font-family: pressStart2P;
   background-image: url("../img/pokedox_bg.jpg");
   background-size: cover;
   background-attachment: fixed;
   line-height: 1.5;
+  text-align: center;
 }
 
 h1 {
@@ -12,12 +15,23 @@ h1 {
   color: white;
   margin-bottom: 80px;
   margin-top: 40px;
-  margin-left: 20px;
 }
+
+.list-group {
+  list-style-type: none;
+  margin: 5px auto;
+  padding: 0;
+  text-align: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: -ms-grid;
+  display: grid;
+}
+
 
 .list-item {
   background-color:rgba(0, 0, 0, 0);
   border-style: none;
+  margin: 10px 10px;
 }
 
 main {
@@ -31,3 +45,19 @@ main {
 .nav-link {
   color: yellow !important;
   }
+
+.pokemon-button {
+  width: 200px;
+  height: 50px;
+  padding: 12px 12px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+@media (max-width: 600px) {
+ .list-group {
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+}

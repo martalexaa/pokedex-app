@@ -1,7 +1,7 @@
 //IIFE
 let pokemonRepository = (function () {
 let pokemonList = [];
-let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=80';
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
 //a function to open the modal container when the user click on one of the pokemon buttons
 function showModal(item) {
@@ -55,10 +55,10 @@ function addListItem(pokemon) {
 
   let pokemonList = $('.list-group');
 
-  let listItem = $('<li class="list-group-item list-item"></li>');
+  let listItem = $('<li class="list-group-item list-item style="width:50%;"></li>');
 
     let button = $(
-      '<button class="pokemon-button btn btn-dark" data-target="#pokemonModal" data-toggle="modal">' +
+      '<button class="pokemon-button btn btn-dark btn-block" data-target="#pokemonModal" data-toggle="modal">' +
         pokemon.name +
         '</button>'
     );
@@ -116,27 +116,26 @@ function addListItem(pokemon) {
 
     //search function
 
-    function liveSearch() {
-      let lis = document.querySelectorAll('.list-item');
-      let search_query = document.querySelector('#search-input').value;
-  
-      for (let i = 0; i < lis.length; i++) {
-          if(lis[i].innerText.toLowerCase()
-            .includes(search_query.toLowerCase())) {
-            lis[i].classList.remove('is-hidden');
-          } else {
-            lis[i].classList.add('is-hidden'); 
-          }
+    function search() {
+      // Get the search input
+      let input = document.getElementById('search-input').value;
+      // Get the list of items
+      let list = document.getElementById('pokemon-list');
+      // Get the list items
+      let listItems = list.getElementsByTagName('li');
+      // Loop through the list items and hide those that don't match the search input
+      for (let i = 0; i < listItems.length; i++) {
+        const item = listItems[i];
+        const itemText = item.textContent;
+        if (itemText.toLowerCase().indexOf(input.toLowerCase()) > -1) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
       }
-  }
-   
-  let searchInput = document.querySelector('#search-input');
+    }
   
-  searchInput.addEventListener('keyup', () => {
-    liveSearch();
-
-
-  });
+  document.getElementById('search-button').addEventListener('click', search);
     
     //functions returned by IIFE 
     return {
