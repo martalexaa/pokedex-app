@@ -2,9 +2,11 @@
 
 A small web application created as part of CareerFoundry's Full-Stack Web Development course with HTML, CSS, JavaScript, Bootstrap and jQuery that loads data from an external API and enables the viewing of data points in detail.
 
-The goal of this project was to learn basic JavaScript (variables, functions, arrays, DOM interaction, AJAX, Json etc.) in the second achievement of the course. Link to the hosted website: https://martalexaa.github.io/pokedex-app/
+The goal of this project was to learn basic JavaScript (variables, functions, arrays, DOM interaction, AJAX, Json etc.) in the second achievement of the course. 
 
 Besides fulfilling the task requirements, I also gave the styling a boost by creating consistent colors and two fonts which match the Pokemon theme. 
+
+<a href="https://martalexaa.github.io/pokedex-app/">The Pokedex-App is hosted on GitHub pages, check it out!</a>
 
  <h2>Features</h2>
   <ul>
@@ -35,14 +37,7 @@ Besides fulfilling the task requirements, I also gave the styling a boost by cre
     <li>Search for items using the search feature, if available.</li>
   </ol>
   <h2>Deployment</h2>
-  <p>The app can be deployed to a publicly accessible platform like GitHub Pages by following the steps below:</p>
-  <ol>
-    <li>Create a GitHub repository for your project.</li>
-    <li>Push the code to the repository.</li>
-    <li>Go to the repository settings and navigate to the "Pages" section.</li>
-    <li>Select the main branch as the source and click on the "Save" button.</li>
-    <li>The app will be published to a GitHub Pages URL, which can be accessed by anyone.</li>
-  </ol>
+  <p>The app is published to GitHub pages, <a href="https://martalexaa.github.io/pokedex-app/">check it out!</a></p>
   <h2>Compatibility</h2>
   <p>The app has been tested and confirmed to work in the following browsers:</p>
   <ul>
