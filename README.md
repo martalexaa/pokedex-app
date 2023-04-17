@@ -29,7 +29,7 @@ Besides fulfilling the task requirements, I also gave the styling a boost by cre
     <li>Deploy the app to a publicly accessible platform like GitHub Pages</li>
     <li>Ensure the app works in Chrome, Firefox, Safari, Edge, and Internet Explorer 11</li>
   </ul>
-  <h2>How to Use</h2>
+  <h2>How to Use it Locally</h2>
   <ol>
     <li>Clone the repository to your local machine.</li>
     <li>Open the index.html file in your web browser.</li>
